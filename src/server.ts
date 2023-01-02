@@ -54,9 +54,9 @@ import {filterImageFromURL, deleteLocalFiles} from './util/util';
       return res.status(400).send({ message: 'Please provide an image URL parameter' });
     }
 
-    if (await checkImageExists(image_url)) {
+    if (await checkImageExists(image_url as string)) {
       try {
-        const filteredImgPath: string = await filterImageFromURL(image_url);
+        const filteredImgPath: string = await filterImageFromURL(image_url as string);
         res.sendFile(filteredImgPath, async (err) => {
           if (err) {
             throw err;
